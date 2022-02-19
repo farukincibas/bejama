@@ -26,6 +26,29 @@ ${({ theme: { colors } }) => css`
     font-size: 14px;
     letter-spacing: 1px;
     cursor: pointer;
+    
+    @media(max-width: 480px){
+        display:none;
+    }
+    `}
+`;
+
+export const ProductAddToCartButtonMobile = styled.button`
+${({ theme: { colors } }) => css`
+    flex: 1 1;
+    width: 100%;
+    border: 1px solid ${colors.DARK};
+    padding: 10px;
+    background:  ${colors.DARK};
+    color: ${colors.WHITE};
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display:none;
+    @media(max-width: 480px){
+        display:block;
+    }
     `}
 `;
 
@@ -67,6 +90,9 @@ export const ProductSummaryDiv = styled.div`
     padding: 14px 0;
     grid-gap: 20px;
     gap: 20px;
+    @media (max-width: 768px) {
+        flex-direction: column;
+      }
 `;
 
 export const ProductDescriptionDiv = styled.div`
@@ -128,3 +154,12 @@ export const Paragraph = styled.p`
     line-height: 150%;
     opacity: 0.6;
 `;
+
+export const ProductMainDiv = styled.div`
+    ${({ theme: { colors } }) => css`
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid ${colors.BORDER_LINE};
+    `}
+`;
+

@@ -1,4 +1,4 @@
-import { ProductDiv, ProductTitleDiv, ProductAddToCartButton, ProductImageBox, ProductImage, ProductTagDiv, ProductSummaryDiv, ProductDescriptionDiv, AppTitleDiv, ProductCategoryDiv, ParagraphMaxWidthFiveHundred, ProductRecommendDiv, ProductRecommendPicsDiv, RecommendPicsBoxDiv, RecommendPicsImg, ClearBothDiv, Paragraph, ProductMainDiv, ProductAddToCartButtonMobile } from './index.styles';
+import { ProductDiv, ProductTitleDiv, ProductAddToCartButton, ProductImageBox, ProductImage, ProductTagDiv, ProductSummaryDiv, ProductDescriptionDiv, AppTitleDiv, ProductCategoryDiv, ParagraphMaxWidthFiveHundred, ProductRecommendDiv, ProductRecommendPicsDiv, RecommendPicsBoxDiv, RecommendPicsImg, ClearBothDiv, Paragraph, ProductMainDiv, ProductAddToCartButtonMobile, MarginBottom } from './index.styles';
 
 
 const ProductArea = () => {
@@ -39,6 +39,8 @@ const ProductArea = () => {
 
                         </ProductRecommendPicsDiv>
                         <ClearBothDiv />
+                        <MarginBottom />
+                        <AppTitleDiv>Details</AppTitleDiv>
                         <Paragraph>Size: 2250 x 1500 pixel</Paragraph>
                         <Paragraph>Size: 15 MB</Paragraph>
                     </ProductRecommendDiv>

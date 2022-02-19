@@ -122,6 +122,9 @@ export const ParagraphMaxWidthFiveHundred = styled.p`
 export const ProductRecommendDiv = styled.div`
     flex: 1 1;
     text-align: right;
+    @media (max-width: 600px){
+        text-align: left;
+    }
 `;
 
 export const ProductRecommendPicsDiv = styled.div`
@@ -148,6 +151,10 @@ export const RecommendPicsImg = styled.img<CartImageProps>`
 
 export const ClearBothDiv = styled.div`
   clear: both;
+`;
+
+export const MarginBottom = styled.div`
+  margin-top:40px;
 `;
 
 export const Paragraph = styled.p`

@@ -1,18 +1,18 @@
 import styled, { css } from 'styled-components';
 
 
-interface SortImageProps {
+interface ImageProps {
     source?: string;
 }
 
-export const SortArrowImage = styled.img<SortImageProps>`
+export const SortArrowImage = styled.img<ImageProps>`
     ${({ source }) => css`
         opacity: 0.5;
         content: url( ${source});
     `}
   `;
 
-  export const SettingsImage = styled.img<SortImageProps>`
+export const SettingsImage = styled.img<ImageProps>`
     ${({ source }) => css`
         width: 100%;
         object-fit: contain;
@@ -61,7 +61,7 @@ export const LightTextDiv = styled.div`
     opacity: 0.7;
 `;
 
-export const SelectPrice = styled.select<SortImageProps>`
+export const SelectPrice = styled.select<ImageProps>`
     ${({ source, theme: { colors } }) => css`
         padding: 3px 5px;
         padding-right: 17px;
@@ -95,3 +95,75 @@ export const ProductListMobileSortDiv = styled.div`
     `}
 `;
 
+export const ProductListSection = styled.section`
+    display: flex;
+    position: relative;
+    margin-bottom: 35px;
+    grid-gap: 20px;
+    gap: 20px;
+`;
+
+export const ProductListCategory = styled.aside`
+${({ theme: { colors } }) => css`
+        width: 100%;
+        max-width: 200px;
+        @media (max-width: 999px) {
+            width: 95% !important;
+            max-width: 300px !important;
+            background: ${colors.WHITE};
+            box-shadow: 0px 3px 12px rgb(0 0 0 / 30%);
+            padding: 30px 10px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 3;
+        }
+    `}
+`;
+
+export const ProductListCategoryTitleDiv = styled.div`
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+`;
+
+export const HeavyText = styled.div`
+    font-weight: 700;
+`;
+
+
+export const CancelMarkImage = styled.img<ImageProps>`
+    ${({ source }) => css`
+        width: 15px;
+        display: none;
+        content: url( ${source});
+        @media (max-width: 480px){
+            display:block;
+        }
+    `}
+  `;
+
+export const ProductListCategoryGroupDiv = styled.div`
+    ${({ theme: { colors } }) => css`
+        padding: 12px 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid ${colors.BORDER_LINE};
+    `}
+`;
+
+export const MarginBottomCheckbox = styled.div`
+    margin-bottom: 12px;
+`;
+/*
+export const ProductListLabel = styled.label<ImageProps>`
+    ${({ source }) => css`
+        text-transform: capitalize;
+        padding-left: 30px;
+        background-image: url(${source});
+        background-position: left;
+        background-size: 16px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    `}
+`;
+*/

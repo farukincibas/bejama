@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyleLocationBoard from './styles/GlobalStyle';
 import { theme } from './styles/themes';
 import Header from './components/Header';
+import ProductHeader from './components/ProductHeader';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -34,6 +35,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyleLocationBoard />
         <Header></Header>
+        <ProductHeader></ProductHeader>
       </ThemeProvider>
     </ContextProvider>
   );

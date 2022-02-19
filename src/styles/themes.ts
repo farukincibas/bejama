@@ -3,11 +3,10 @@ import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
     colors: {
-        DARK_GREY: '#696969',
-        LIGHT_GREY: '#E3E4E7',
-        LIGHT_BLUE: '#ADB9C3',
-        DARK_BLUE: '#3878A2',
-        WHITE: '#FFFFFF',
+        BORDER_LINE: '#e4e4e4',
+        DARK: '#000000',
+        WHITE: '#ffffff',
+        PAGINATE_DISABLED: '#b4b4b4',
     },
 };
 

@@ -1,14 +1,16 @@
 import styled, { css } from 'styled-components';
 
-import CartImage from '../../ico/shopping-cart.svg';
+import CartImage from '../../icons/shopping-cart.svg';
 
 export const ProductNavDiv = styled.div`
+${({ theme: { colors } }) => css`
     display: flex;
     position: relative;
     margin-bottom: 15px;
     justify-content: space-between;
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 1px solid ${colors.BORDER_LINE};
     padding: 14px 0;
+  `}
 `;
 export const ProductCartDiv = styled.div`
     align-self: center;
@@ -27,40 +29,15 @@ ProductCartImage.defaultProps = {
 };
 
 export const NavCartCounterDiv = styled.div`
+${({ theme: { colors } }) => css`
     display: table;
     padding: 2px 5px;
-    background: #000000;
-    color: #ffffff;
+    background: ${colors.DARK};
+    color: ${colors.WHITE};
     font-size: 10px;
     position: absolute;
     right: 0;
-    bottom: 0px;
+    bottom: 0px; 
+    `}
 `;
 
-
-/*
-interface CartImageProps {
-  cartImage?: string;
-}
-
-export const ProductCartImage = styled.img<CartImageProps>`
-  ${({ cartImage }) => css`
-  height: 34px;
-  cursor: pointer;
-  flex-shrink: 0;
-  content: url( ${cartImage});
-  
-  `}
-`;
-
-export const TableHeader = styled.th`
-  ${({ theme: { colors } }) => css`
-    font-family: sans-serif;
-    font-size: 12px;
-    text-align: center;
-    padding: 2px 0;
-    background-color: ${colors.LIGHT_BLUE};
-    color: ${colors.WHITE};
-    border-radius: 4px;
-  `}
-`;*/

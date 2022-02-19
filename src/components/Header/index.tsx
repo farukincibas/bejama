@@ -1,8 +1,5 @@
 import { ProductNavDiv, ProductCartDiv, NavCartCounterDiv, ProductCartImage } from './index.styles';
-import AppLogo from '../../ico/bejamas-logo.svg'
-
-
-
+import AppLogo from '../../icons/bejamas-logo.svg'
 
 const Header = () => {
     return (

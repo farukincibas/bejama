@@ -1,0 +1,31 @@
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+
+.checkbox-holder {
+  margin-bottom: 12px;
+}
+
+.form-checkbox {
+  text-transform: capitalize;
+  padding-left: 30px;
+  background-image: url(../icons/checkbox-empty.svg);
+  background-position: left;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.checkbox-holder input[type="checkbox"]:checked + .form-checkbox {
+	background-image: url(../icons/checkbox-checked.svg);
+}
+
+.checkbox-holder input[type="radio"]:checked + .form-checkbox {
+	background-image: url(../icons/checkbox-checked.svg);
+}
+
+.hidebx {
+	display: none !important;
+}

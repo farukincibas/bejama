@@ -5,19 +5,14 @@ interface ImageProps {
     source?: string;
 }
 
-export const SortArrowImage = styled.img<ImageProps>`
-    ${({ source }) => css`
+export const SortArrowImage = styled.img`
         opacity: 0.5;
-        content: url( ${source});
-    `}
+        width: 15px;
   `;
 
-export const SettingsImage = styled.img<ImageProps>`
-    ${({ source }) => css`
+export const SettingsImage = styled.img`
         width: 100%;
         object-fit: contain;
-        content: url( ${source});
-    `}
   `;
 
 
@@ -59,10 +54,13 @@ export const ProductListSortDiv = styled.div`
 
 export const LightTextDiv = styled.div`
     opacity: 0.7;
+    font-size: 21px;
+    margin-left: 4px;
 `;
 
 export const SelectPrice = styled.select<ImageProps>`
     ${({ source, theme: { colors } }) => css`
+        font-size: 18px;
         padding: 3px 5px;
         padding-right: 17px;
         appearance: none;
@@ -72,7 +70,7 @@ export const SelectPrice = styled.select<ImageProps>`
         background-image: url(${source});
         background-repeat: no-repeat;
         background-position: right;
-        background-size: 10px;
+        background-size: 15px;
         @media (max-width: 999px) {
             display: none;
         }

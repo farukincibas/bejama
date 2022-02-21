@@ -35,8 +35,8 @@ const ProductListArea = () => {
 
                 <ProductListFilterDiv>
                     <ProductListSortDiv>
-                        <SortArrowImage source={Sort}></SortArrowImage>
-                        <LightTextDiv>Sort</LightTextDiv>
+                        <SortArrowImage src={Sort}></SortArrowImage>
+                        <LightTextDiv>Sort By</LightTextDiv>
                     </ProductListSortDiv>
 
                     {/* price */}
@@ -48,7 +48,7 @@ const ProductListArea = () => {
 
                     {/* mobile tap filter */}
                     <ProductListMobileSortDiv>
-                        <SettingsImage source={SettingsIcon}></SettingsImage>
+                        <SettingsImage src={SettingsIcon}></SettingsImage>
                     </ProductListMobileSortDiv>
 
                 </ProductListFilterDiv>

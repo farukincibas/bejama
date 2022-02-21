@@ -38,11 +38,11 @@ export const AddToCartBelow = styled.button`
         letter-spacing: 1px;
         cursor: pointer;
         position: absolute;
-        bottom: 0px;
+        bottom: -40px;
         left: 0;
         transition: 0.2s ease; 
         ${ProductItemImgDiv}:hover &{
-            bottom:1px;
+            bottom:0px;
         }
     `}
 

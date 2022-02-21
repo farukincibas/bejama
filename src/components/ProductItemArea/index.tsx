@@ -1,21 +1,28 @@
-import { AddToCartBelow, ProductImageBelow, ProductItemDiv, ProductItemImgDiv, ProductName, ProductPrice, ProductTitle, ProductTopLeftText } from './index.styles';
+import { AddToCartBelow, ProductCategory, ProductImageBelow, ProductItemDiv, ProductItemImgDiv, ProductName, ProductPrice, ProductTopLeftText } from './index.styles';
 
-const ProductItemsArea = () => {
+const ProductItemsArea = ({ product }: any) => {
     return (
         <>
             <ProductItemDiv>
                 <ProductItemImgDiv>
-                    <ProductImageBelow src='https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260' alt="Bench In Forest"></ProductImageBelow>
-                    <ProductTopLeftText>Best Seller</ProductTopLeftText>
+                    <ProductImageBelow src={product?.image?.src} alt={product?.image?.alt}></ProductImageBelow>
+                    {(product?.bestseller) ? (
+                        <ProductTopLeftText>Best Seller</ProductTopLeftText>
+                    ) : ('')}
+                    {(product?.featured) ? (
+                        <ProductTopLeftText>Featured</ProductTopLeftText>
+                    ) : ('')}
+
                     <AddToCartBelow>ADD TO CART</AddToCartBelow>
                 </ProductItemImgDiv>
 
-                <ProductTitle>people</ProductTitle>
-                <ProductName>Bench In Forest</ProductName>
-                <ProductPrice>$3.89</ProductPrice>
+                <ProductCategory>{product?.category}</ProductCategory>
+                <ProductName>{product?.name}</ProductName>
+                <ProductPrice>${product?.price}</ProductPrice>
             </ProductItemDiv>
         </>
     );
+
 };
 
 export default ProductItemsArea;

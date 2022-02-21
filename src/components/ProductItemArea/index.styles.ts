@@ -62,7 +62,7 @@ export const ProductTopLeftText = styled.div`
 
 
 
-export const ProductTitle = styled.div`
+export const ProductCategory = styled.div`
     text-transform: capitalize;
     opacity: 0.5;
     padding: 10px 0;

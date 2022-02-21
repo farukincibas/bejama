@@ -3,13 +3,15 @@ import Sort from '../../icons/sort.svg';
 import CarretDown from '../../icons/carret-down.svg';
 import SettingsIcon from '../../icons/setting-lines.svg';
 import CancelIcon from '../../icons/close.svg';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import '../../styles/Form.css';
 import ProductItemsArea from '../ProductItemArea';
-const ProductListArea = () => {
+const ProductListArea = ({ products }: any) => {
     const [checkedPeople, setCheckedPeople] = useState(false);
     const [checkedPremium, setCheckedPremium] = useState(false);
     const [checkedPets, setCheckedPets] = useState(false);
+
+
 
     const handlePeopleCheckboxChange = (checkedName: string) => {
         console.log(checkedName);
@@ -126,7 +128,9 @@ const ProductListArea = () => {
                 </ProductListCategory>
 
                 <ProductItemsList>
-                    <ProductItemsArea></ProductItemsArea>
+                    {products.map((product: any) => (
+                        <ProductItemsArea key={product.name} product={product}></ProductItemsArea>
+                    ))}
                 </ProductItemsList>
 
             </ProductListSection>

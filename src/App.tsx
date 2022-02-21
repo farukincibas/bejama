@@ -8,8 +8,8 @@ import ProductArea from './components/ProductArea';
 import ProductListArea from './components/ProductListArea';
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const getData = () => {
+  const [products, setProducts] = useState([]);
+  const getProductData = () => {
     fetch('json/products.json'
       , {
         headers: {
@@ -21,14 +21,14 @@ const App = () => {
       .then(function (response) {
         return response.json();
       })
-      .then(function (myJson) {
-        console.log(myJson);
-        setData(myJson)
+      .then(function (productJson) {
+        console.log(productJson.products);
+        setProducts(productJson.products);
       });
   }
 
   useEffect(() => {
-    getData()
+    getProductData();
   }, [])
 
   return (
@@ -37,7 +37,7 @@ const App = () => {
         <GlobalStyleLocationBoard />
         <Header></Header>
         <ProductArea></ProductArea>
-        <ProductListArea></ProductListArea>
+        <ProductListArea products={products}></ProductListArea>
       </ThemeProvider>
     </ContextProvider>
   );

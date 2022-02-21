@@ -59,16 +59,10 @@ export const ProductImageBox = styled.div`
     margin-bottom: 20px;
 `;
 
-interface CartImageProps {
-    cartImage?: string;
-}
 
-export const ProductImage = styled.img<CartImageProps>`
-    ${({ cartImage }) => css`
+export const ProductImage = styled.img`
     width: 100%;
     object-fit: cover;
-    content: url( ${cartImage});
-    `}
   `;
 
 export const ProductTagDiv = styled.div`
@@ -141,12 +135,9 @@ export const RecommendPicsBoxDiv = styled.div`
     align-self: flex-end;
 `;
 
-export const RecommendPicsImg = styled.img<CartImageProps>`
-    ${({ cartImage }) => css`
+export const RecommendPicsImg = styled.img`
     height: 100%;
     object-fit: cover;
-    content: url( ${cartImage});
-    `}
   `;
 
 export const ClearBothDiv = styled.div`

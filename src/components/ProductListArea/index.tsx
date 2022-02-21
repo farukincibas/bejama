@@ -1,10 +1,11 @@
-import { CancelMarkImage, HeavySpan, HeavyText, LightFiftySpan, LightTextDiv, MarginBottomCheckbox, ProductListCategory, ProductListCategoryGroupDiv, ProductListCategoryTitleDiv, ProductListFilterDiv, ProductListHeadDiv, ProductListMobileSortDiv, ProductListSection, ProductListSortDiv, ProductListTypeDiv, SelectPrice, SettingsImage, SortArrowImage } from './index.styles';
+import { CancelMarkImage, HeavySpan, HeavyText, LightFiftySpan, LightTextDiv, MarginBottomCheckbox, ProductItemsList, ProductListCategory, ProductListCategoryGroupDiv, ProductListCategoryTitleDiv, ProductListFilterDiv, ProductListHeadDiv, ProductListMobileSortDiv, ProductListSection, ProductListSortDiv, ProductListTypeDiv, SelectPrice, SettingsImage, SortArrowImage } from './index.styles';
 import Sort from '../../icons/sort.svg';
 import CarretDown from '../../icons/carret-down.svg';
 import SettingsIcon from '../../icons/setting-lines.svg';
 import CancelIcon from '../../icons/close.svg';
 import { ChangeEvent, useState } from 'react';
 import '../../styles/Form.css';
+import ProductItemsArea from '../ProductItemArea';
 const ProductListArea = () => {
     const [checkedPeople, setCheckedPeople] = useState(false);
     const [checkedPremium, setCheckedPremium] = useState(false);
@@ -122,8 +123,12 @@ const ProductListArea = () => {
 
                         </form>
                     </ProductListCategoryGroupDiv>
-
                 </ProductListCategory>
+
+                <ProductItemsList>
+                    <ProductItemsArea></ProductItemsArea>
+                </ProductItemsList>
+
             </ProductListSection>
         </>
     );

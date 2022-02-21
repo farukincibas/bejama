@@ -121,6 +121,13 @@ ${({ theme: { colors } }) => css`
     `}
 `;
 
+export const ProductItemsList = styled.aside`
+    flex: 1 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px 20px;
+`;
+
 export const ProductListCategoryTitleDiv = styled.div`
     display: flex;
     position: relative;

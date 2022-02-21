@@ -11,7 +11,7 @@ const ProductArea = () => {
                 </ProductDiv>
 
                 <ProductImageBox>
-                    <ProductImage cartImage={"https://images.pexels.com/photos/1198802/pexels-photo-1198802.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"} />
+                    <ProductImage src={"https://images.pexels.com/photos/1198802/pexels-photo-1198802.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"} alt=""/>
                     <ProductTagDiv>Photo of The Day</ProductTagDiv>
                 </ProductImageBox>
                 <ProductAddToCartButtonMobile>ADD TO CART</ProductAddToCartButtonMobile>
@@ -26,15 +26,15 @@ const ProductArea = () => {
                         <AppTitleDiv>People also buy</AppTitleDiv>
                         <ProductRecommendPicsDiv>
                             <RecommendPicsBoxDiv>
-                                <RecommendPicsImg cartImage={"https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"} />
+                                <RecommendPicsImg src={"https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"} alt="" />
                             </RecommendPicsBoxDiv>
 
                             <RecommendPicsBoxDiv>
-                                <RecommendPicsImg cartImage={"https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"} />
+                                <RecommendPicsImg src={"https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"} alt=""/>
                             </RecommendPicsBoxDiv>
 
                             <RecommendPicsBoxDiv>
-                                <RecommendPicsImg cartImage={"https://images.pexels.com/photos/33152/european-rabbits-bunnies-grass-wildlife.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"} />
+                                <RecommendPicsImg src={"https://images.pexels.com/photos/33152/european-rabbits-bunnies-grass-wildlife.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"} alt=""/>
                             </RecommendPicsBoxDiv>
 
                         </ProductRecommendPicsDiv>

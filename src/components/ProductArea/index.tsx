@@ -19,7 +19,9 @@ const ProductArea = (products: any) => {
 
                     <ProductImageBox>
                         <ProductImage src={product?.image?.src} alt={product?.image?.alt} />
-                        <ProductTagDiv>Photo of The Day</ProductTagDiv>
+                        {(product?.featured) ? (
+                            <ProductTagDiv>Photo of The Day</ProductTagDiv>
+                        ) : ('')}
                     </ProductImageBox>
                     <ProductAddToCartButtonMobile>ADD TO CART</ProductAddToCartButtonMobile>
                     <ProductSummaryDiv>

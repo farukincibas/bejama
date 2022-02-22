@@ -9,6 +9,7 @@ import ProductListArea from './components/ProductListArea';
 
 const App = () => {
   const [products, setProducts] = useState([]);
+
   const getProductData = () => {
     fetch('json/products.json'
       , {
@@ -22,7 +23,6 @@ const App = () => {
         return response.json();
       })
       .then(function (productJson) {
-        console.log(productJson.products);
         setProducts(productJson.products);
       });
   }
@@ -36,7 +36,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyleLocationBoard />
         <Header></Header>
-        <ProductArea></ProductArea>
+        <ProductArea products={products}></ProductArea>
         <ProductListArea products={products}></ProductListArea>
       </ThemeProvider>
     </ContextProvider>

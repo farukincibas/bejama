@@ -1,4 +1,4 @@
-import { CancelMarkImage, HeavySpan, HeavyText, LightFiftySpan, LightTextDiv, MarginBottomCheckbox, ProductItemsList, ProductListCategory, ProductListCategoryGroupDiv, ProductListCategoryTitleDiv, ProductListFilterDiv, ProductListHeadDiv, ProductListMobileSortDiv, ProductListSection, ProductListSortDiv, ProductListTypeDiv, SelectPrice, SettingsImage, SortArrowImage } from './index.styles';
+import { CancelMarkImage, HeavySpan, HeavyText, LightFiftySpan, LightTextDiv, ProductItemsList, ProductListCategory, ProductListCategoryGroupDiv, ProductListCategoryTitleDiv, ProductListFilterDiv, ProductListHeadDiv, ProductListMobileSortDiv, ProductListSection, ProductListSortDiv, ProductListTypeDiv, SelectPrice, SettingsImage, SortArrowImage } from './index.styles';
 import Sort from '../../icons/sort.svg';
 import CarretDown from '../../icons/carret-down.svg';
 import SettingsIcon from '../../icons/setting-lines.svg';
@@ -10,6 +10,8 @@ const ProductListArea = ({ products }: any) => {
     const [checkedPeople, setCheckedPeople] = useState(false);
     const [checkedPremium, setCheckedPremium] = useState(false);
     const [checkedPets, setCheckedPets] = useState(false);
+
+
 
 
 
@@ -128,7 +130,7 @@ const ProductListArea = ({ products }: any) => {
                 </ProductListCategory>
 
                 <ProductItemsList>
-                    {products.map((product: any) => (
+                    {products.length > 0 && products.map((product: any) => (
                         <ProductItemsArea key={product.name} product={product}></ProductItemsArea>
                     ))}
                 </ProductItemsList>

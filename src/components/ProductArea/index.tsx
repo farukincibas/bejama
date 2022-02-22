@@ -1,51 +1,54 @@
 import { ProductDiv, ProductTitleDiv, ProductAddToCartButton, ProductImageBox, ProductImage, ProductTagDiv, ProductSummaryDiv, ProductDescriptionDiv, AppTitleDiv, ProductCategoryDiv, ParagraphMaxWidthFiveHundred, ProductRecommendDiv, ProductRecommendPicsDiv, RecommendPicsBoxDiv, RecommendPicsImg, ClearBothDiv, Paragraph, ProductMainDiv, ProductAddToCartButtonMobile, MarginBottom } from './index.styles';
 
 
-const ProductArea = () => {
+const ProductArea = (products: any) => {
+    const wholeProducts = products.products;
+    const filteredProduct = wholeProducts.filter((product: any) => product.details !== null);
+    const product = filteredProduct[0];
+    const recommendations = product?.details?.recommendations;
+
+
     return (
         <>
-            <ProductMainDiv>
-                <ProductDiv>
-                    <ProductTitleDiv>Samurai King Restling</ProductTitleDiv>
-                    <ProductAddToCartButton>ADD TO CART</ProductAddToCartButton>
-                </ProductDiv>
+            {filteredProduct.length > 0 && (
+                <ProductMainDiv>
+                    <ProductDiv>
+                        <ProductTitleDiv >{product?.name}</ProductTitleDiv>
+                        <ProductAddToCartButton>ADD TO CART</ProductAddToCartButton>
+                    </ProductDiv>
 
-                <ProductImageBox>
-                    <ProductImage src={"https://images.pexels.com/photos/1198802/pexels-photo-1198802.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"} alt=""/>
-                    <ProductTagDiv>Photo of The Day</ProductTagDiv>
-                </ProductImageBox>
-                <ProductAddToCartButtonMobile>ADD TO CART</ProductAddToCartButtonMobile>
-                <ProductSummaryDiv>
-                    <ProductDescriptionDiv>
-                        <AppTitleDiv>About The Samurai King Restling</AppTitleDiv>
-                        <ProductCategoryDiv>Pets</ProductCategoryDiv>
-                        <ParagraphMaxWidthFiveHundred>So how did the classical Latin become so incoherent? According to McClintock, a 15th century typesetter likely</ParagraphMaxWidthFiveHundred>
-                    </ProductDescriptionDiv>
+                    <ProductImageBox>
+                        <ProductImage src={product?.image?.src} alt={product?.image?.alt} />
+                        <ProductTagDiv>Photo of The Day</ProductTagDiv>
+                    </ProductImageBox>
+                    <ProductAddToCartButtonMobile>ADD TO CART</ProductAddToCartButtonMobile>
+                    <ProductSummaryDiv>
+                        <ProductDescriptionDiv>
+                            <AppTitleDiv>About The {product?.name}</AppTitleDiv>
+                            <ProductCategoryDiv>{product?.category}</ProductCategoryDiv>
+                            <ParagraphMaxWidthFiveHundred>{product?.details?.description}</ParagraphMaxWidthFiveHundred>
+                        </ProductDescriptionDiv>
 
-                    <ProductRecommendDiv>
-                        <AppTitleDiv>People also buy</AppTitleDiv>
-                        <ProductRecommendPicsDiv>
-                            <RecommendPicsBoxDiv>
-                                <RecommendPicsImg src={"https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"} alt="" />
-                            </RecommendPicsBoxDiv>
+                        <ProductRecommendDiv>
+                            <AppTitleDiv>People also buy</AppTitleDiv>
+                            <ProductRecommendPicsDiv>
+                                {recommendations.length > 0 && recommendations.map((recommend: any) => (
+                                    <RecommendPicsBoxDiv key={recommend?.alt}>
+                                        <RecommendPicsImg src={recommend?.src} alt={recommend?.alt} />
+                                    </RecommendPicsBoxDiv>
+                                ))}
+                            </ProductRecommendPicsDiv>
+                            <ClearBothDiv />
+                            <MarginBottom />
+                            <AppTitleDiv>Details</AppTitleDiv>
+                            <Paragraph>Size:{product?.details?.dimensions?.width} x {product?.details?.dimensions?.height} pixel</Paragraph>
+                            <Paragraph>Size: {Math.round((product?.details?.size) / 1024)} MB</Paragraph>
+                        </ProductRecommendDiv>
+                    </ProductSummaryDiv>
+                </ProductMainDiv>
+            )
+            }
 
-                            <RecommendPicsBoxDiv>
-                                <RecommendPicsImg src={"https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"} alt=""/>
-                            </RecommendPicsBoxDiv>
-
-                            <RecommendPicsBoxDiv>
-                                <RecommendPicsImg src={"https://images.pexels.com/photos/33152/european-rabbits-bunnies-grass-wildlife.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"} alt=""/>
-                            </RecommendPicsBoxDiv>
-
-                        </ProductRecommendPicsDiv>
-                        <ClearBothDiv />
-                        <MarginBottom />
-                        <AppTitleDiv>Details</AppTitleDiv>
-                        <Paragraph>Size: 2250 x 1500 pixel</Paragraph>
-                        <Paragraph>Size: 15 MB</Paragraph>
-                    </ProductRecommendDiv>
-                </ProductSummaryDiv>
-            </ProductMainDiv>
         </>
     );
 };

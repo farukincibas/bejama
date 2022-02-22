@@ -325,13 +325,13 @@
         "details": null
       },
       {
-        "name": "Samurai King Restling",
-        "category": "pets",
+        "name": "Straw Hat And Sword",
+        "category": "sword",
         "price": 101,
         "currency": "USD",
         "image": {
-          "src": "https://images.pexels.com/photos/1198802/pexels-photo-1198802.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          "alt": "Samurai King Restling"
+          "src": "https://images.pexels.com/photos/5971346/pexels-photo-5971346.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          "alt": "Man Wearing Straw Hat Drawing His Sword"
         },
         "bestseller": false,
         "featured": true,

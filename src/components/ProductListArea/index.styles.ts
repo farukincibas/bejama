@@ -156,19 +156,4 @@ export const ProductListCategoryGroupDiv = styled.div`
     `}
 `;
 
-export const MarginBottomCheckbox = styled.div`
-    margin-bottom: 12px;
-`;
-/*
-export const ProductListLabel = styled.label<ImageProps>`
-    ${({ source }) => css`
-        text-transform: capitalize;
-        padding-left: 30px;
-        background-image: url(${source});
-        background-position: left;
-        background-size: 16px;
-        background-repeat: no-repeat;
-        cursor: pointer;
-    `}
-`;
-*/
+

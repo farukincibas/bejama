@@ -115,6 +115,7 @@ ${({ theme: { colors } }) => css`
             top: 0;
             right: 0;
             z-index: 3;
+            display:block;
         }
     `}
 `;
@@ -124,6 +125,11 @@ export const ProductItemsList = styled.aside`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px 20px;
+    @media  (max-width: 999px) {
+        max-width: 350px;
+        margin: auto;
+        grid-template-columns: 1fr;
+    }
 `;
 
 export const ProductListCategoryTitleDiv = styled.div`

@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import '../../styles/Form.css';
 import ProductItemsArea from '../ProductItemArea';
 const ProductListArea = ({ products }: any) => {
-    const [showMobile, setShowMobile] = useState(true);
+    const [showCategory, setShowCategory] = useState(true);
     const [checkedPeople, setCheckedPeople] = useState(false);
     const [checkedPremium, setCheckedPremium] = useState(false);
     const [checkedPets, setCheckedPets] = useState(false);
@@ -27,7 +27,7 @@ const ProductListArea = ({ products }: any) => {
 
     useEffect(() => {
         const handleResize = () => {
-            Math.max(window.innerWidth || document.documentElement.clientWidth) > 999 ? setShowMobile(true) : setShowMobile(false);
+            Math.max(window.innerWidth || document.documentElement.clientWidth) > 999 ? setShowCategory(true) : setShowCategory(false);
         }
         window.addEventListener('resize', handleResize)
     })
@@ -55,7 +55,7 @@ const ProductListArea = ({ products }: any) => {
                     </SelectPrice>
 
                     {/* mobile tap filter */}
-                    <ProductListMobileSortDiv onClick={() => setShowMobile(!showMobile)}>
+                    <ProductListMobileSortDiv onClick={() => setShowCategory(!showCategory)}>
                         <SettingsImage src={SettingsIcon}></SettingsImage>
                     </ProductListMobileSortDiv>
 
@@ -63,11 +63,11 @@ const ProductListArea = ({ products }: any) => {
             </ProductListHeadDiv>
 
             <ProductListSection>
-                {showMobile && (
+                {showCategory && (
                     <ProductListCategory>
                         <ProductListCategoryTitleDiv>
                             <HeavyText>Category</HeavyText>
-                            <CancelMarkImage onClick={() => setShowMobile(!showMobile)} source={CancelIcon}></CancelMarkImage>
+                            <CancelMarkImage onClick={() => setShowCategory(!showCategory)} source={CancelIcon}></CancelMarkImage>
                         </ProductListCategoryTitleDiv>
 
 

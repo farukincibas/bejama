@@ -21,8 +21,8 @@ const Header = () => {
                 <ProductCartBasketAside>
                     <CloseButton onClick={() => setShowBasket(!showBasket)} source={CancelIcon}></CloseButton>
                     <ClearBothDiv></ClearBothDiv>
-                    {state.length > 0 && state.map((cartItems: Cart) => (
-                        <ProductCartBasketTile>
+                    {state.length > 0 && state.map((cartItems: Cart, index) => (
+                        <ProductCartBasketTile key={index}>
                             <ProductBagInfoDiv>
                                 <ProductBagName>{cartItems.name}</ProductBagName>
                                 <div>${cartItems.price}</div>

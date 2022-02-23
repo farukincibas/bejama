@@ -1,6 +1,22 @@
 import { AddToCartBelow, ProductCategory, ProductImageBelow, ProductItemDiv, ProductItemImgDiv, ProductName, ProductPrice, ProductTopLeftText } from './index.styles';
+import { Context } from '../../store/context';
+import { ActionTypes, Cart } from '../../store/reducer';
+import { useContext } from 'react';
 
 const ProductItemsArea = ({ product }: any) => {
+    const { dispatch } = useContext(Context);
+
+    const handleAdd = ({ name, image, price, productId }: Cart) => {
+        const newCartItem = {
+            productId: productId,
+            name: name,
+            image: image,
+            price: price,
+        };
+        dispatch({ type: ActionTypes.addCart, payload: newCartItem });
+    };
+
+
     return (
         <>
             <ProductItemDiv>
@@ -13,7 +29,12 @@ const ProductItemsArea = ({ product }: any) => {
                         <ProductTopLeftText>Featured</ProductTopLeftText>
                     ) : ('')}
 
-                    <AddToCartBelow>ADD TO CART</AddToCartBelow>
+                    <AddToCartBelow onClick={() => handleAdd({
+                        productId: product?.productId,
+                        name: product?.name,
+                        image: product?.image?.src,
+                        price: product?.price,
+                    })}>ADD TO CART</AddToCartBelow>
                 </ProductItemImgDiv>
 
                 <ProductCategory>{product?.category}</ProductCategory>

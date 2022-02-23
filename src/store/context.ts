@@ -1,13 +1,10 @@
 import { createContext } from 'react';
-import { Company, Actions, initialState } from './reducer';
-
+import { Cart, Actions, initialState } from './reducer';
 
 export type ContextState = {
-    state: Company[];
+    state: Cart[];
     dispatch: React.Dispatch<Actions>;
 };
-
-
 
 const contextDefaultValues: ContextState = {
     state: initialState,

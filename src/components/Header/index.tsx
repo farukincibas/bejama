@@ -2,31 +2,36 @@ import { ProductNavDiv, ProductCartDiv, NavCartCounterDiv, ProductCartImage, Pro
 import AppLogo from '../../icons/bejamas-logo.svg'
 import CancelIcon from '../../icons/close.svg';
 import { ClearBothDiv } from '../ProductArea/index.styles';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Context } from '../../store/context';
+import { Cart } from '../../store/reducer';
 
 const Header = () => {
     const [showBasket, setShowBasket] = useState(false);
+    const { state } = useContext(Context);
     return (
         <ProductNavDiv>
             <img src={AppLogo} alt="Bejamas Logo" />
             {/* cart */}
             <ProductCartDiv>
                 <ProductCartImage onClick={() => setShowBasket(!showBasket)}></ProductCartImage>
-                <NavCartCounterDiv>0</NavCartCounterDiv>
+                {state.length > 0 ? <NavCartCounterDiv>  {state.length} </NavCartCounterDiv> : <></>}
             </ProductCartDiv>
             {showBasket && (
                 <ProductCartBasketAside>
                     <CloseButton onClick={() => setShowBasket(!showBasket)} source={CancelIcon}></CloseButton>
                     <ClearBothDiv></ClearBothDiv>
-                    <ProductCartBasketTile>
-                        <ProductBagInfoDiv>
-                            <ProductBagName>Samurai King Restling</ProductBagName>
-                            <div>$101</div>
-                        </ProductBagInfoDiv>
-                        <ProductBagImageBoxDiv>
-                            <ProductBagImageBoxImg src="https://images.pexels.com/photos/1198802/pexels-photo-1198802.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Samurai King Restling" />
-                        </ProductBagImageBoxDiv>
-                    </ProductCartBasketTile>
+                    {state.length > 0 && state.map((cartItems: Cart) => (
+                        <ProductCartBasketTile>
+                            <ProductBagInfoDiv>
+                                <ProductBagName>{cartItems.name}</ProductBagName>
+                                <div>${cartItems.price}</div>
+                            </ProductBagInfoDiv>
+                            <ProductBagImageBoxDiv>
+                                <ProductBagImageBoxImg src={cartItems.image} />
+                            </ProductBagImageBoxDiv>
+                        </ProductCartBasketTile>
+                    ))}
                     <ButtonClear>Clear</ButtonClear>
                 </ProductCartBasketAside>
             )}

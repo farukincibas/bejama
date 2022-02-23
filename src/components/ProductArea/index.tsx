@@ -1,11 +1,24 @@
+import { useContext } from 'react';
 import { ProductDiv, ProductTitleDiv, ProductAddToCartButton, ProductImageBox, ProductImage, ProductTagDiv, ProductSummaryDiv, ProductDescriptionDiv, AppTitleDiv, ProductCategoryDiv, ParagraphMaxWidthFiveHundred, ProductRecommendDiv, ProductRecommendPicsDiv, RecommendPicsBoxDiv, RecommendPicsImg, ClearBothDiv, Paragraph, ProductMainDiv, ProductAddToCartButtonMobile, MarginBottom } from './index.styles';
-
+import { ActionTypes, Cart } from '../../store/reducer';
+import { Context } from '../../store/context';
 
 const ProductArea = (products: any) => {
     const wholeProducts = products.products;
-    const filteredProduct = wholeProducts.filter((product: any) => product.details !== null);
+    const filteredProduct = wholeProducts.filter((product: any) => product.featured === true);
     const product = filteredProduct[0];
     const recommendations = product?.details?.recommendations;
+    const { dispatch } = useContext(Context);
+
+    const handleAdd = ({ name, image, price, productId }: Cart) => {
+        const newCartItem = {
+            productId: productId,
+            name: name,
+            image: image,
+            price: price,
+        };
+        dispatch({ type: ActionTypes.addCart, payload: newCartItem });
+    };
 
 
     return (
@@ -14,7 +27,12 @@ const ProductArea = (products: any) => {
                 <ProductMainDiv>
                     <ProductDiv>
                         <ProductTitleDiv >{product?.name}</ProductTitleDiv>
-                        <ProductAddToCartButton>ADD TO CART</ProductAddToCartButton>
+                        <ProductAddToCartButton onClick={() => handleAdd({
+                            productId: product?.productId,
+                            name: product?.name,
+                            image: product?.image?.src,
+                            price: product?.price,
+                        })}>ADD TO CART</ProductAddToCartButton>
                     </ProductDiv>
 
                     <ProductImageBox>
@@ -23,7 +41,12 @@ const ProductArea = (products: any) => {
                             <ProductTagDiv>Photo of The Day</ProductTagDiv>
                         ) : ('')}
                     </ProductImageBox>
-                    <ProductAddToCartButtonMobile>ADD TO CART</ProductAddToCartButtonMobile>
+                    <ProductAddToCartButtonMobile onClick={() => handleAdd({
+                        productId: product?.productId,
+                        name: product?.name,
+                        image: product?.image?.src,
+                        price: product?.price,
+                    })}>ADD TO CART</ProductAddToCartButtonMobile>
                     <ProductSummaryDiv>
                         <ProductDescriptionDiv>
                             <AppTitleDiv>About The {product?.name}</AppTitleDiv>

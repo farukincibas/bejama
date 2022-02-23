@@ -8,7 +8,7 @@ const ContextProvider = ({ children }: any) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            localStorage.setItem('companies', JSON.stringify(state));
+            localStorage.setItem('cartItems', JSON.stringify(state));
         }, 0);
 
         return () => clearTimeout(timer);

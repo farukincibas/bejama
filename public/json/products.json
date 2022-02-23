@@ -1,6 +1,7 @@
 {
     "products": [
       {
+        "productId": 1,
         "name": "Bench In Forest",
         "category": "people",
         "price": 3.89,
@@ -14,6 +15,7 @@
         "details": null
       },
       {
+        "productId": 2,
         "name": "Cucumber and Carrot Salad",
         "category": "food",
         "price": 93.89,
@@ -22,11 +24,12 @@
           "src": "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
           "alt": "Cucumber and Carrot Salad"
         },
-        "bestseller": false,
-        "featured": true,
+        "bestseller": true,
+        "featured": false,
         "details": null
       },
       {
+        "productId": 3,
         "name": "Ponyo Sakana",
         "category": "food",
         "price": 77.55,
@@ -40,6 +43,7 @@
         "details": null
       },
       {
+        "productId": 4,
         "name": "Hamburger and Chips",
         "category": "food",
         "price": 9.99,
@@ -49,10 +53,11 @@
           "alt": "Hamburger and Chips"
         },
         "bestseller": false,
-        "featured": true,
+        "featured": false,
         "details": null
       },
       {
+        "productId": 5,
         "name": "Japanese Soup",
         "category": "food",
         "price": 39.99,
@@ -66,6 +71,7 @@
         "details": null
       },
       {
+        "productId": 6,
         "name": "Sliced Bread with Salad",
         "category": "food",
         "price": 13.99,
@@ -79,6 +85,7 @@
         "details": null
       },
       {
+        "productId": 7,
         "name": "Kittens On Grass",
         "category": "pets",
         "price": 93.89,
@@ -88,10 +95,11 @@
           "alt": "Kittens On Grass"
         },
         "bestseller": false,
-        "featured": true,
+        "featured": false,
         "details": null
       },
       {
+        "productId": 8,
         "name": "Grilled Barbecue",
         "category": "food",
         "price": 55,
@@ -105,6 +113,7 @@
         "details": null
       },
       {
+        "productId": 9,
         "name": "Huskeys Driving Sled",
         "category": "pets",
         "price": 250,
@@ -118,6 +127,7 @@
         "details": null
       },
       {
+        "productId": 10,
         "name": "Tangerine",
         "category": "food",
         "price": 25,
@@ -131,6 +141,7 @@
         "details": null
       },
       {
+        "productId": 11,
         "name": "London City",
         "category": "cities",
         "price": 140,
@@ -144,6 +155,7 @@
         "details": null
       },
       {
+        "productId": 12,
         "name": "Assorted Sliced Fruits",
         "category": "food",
         "price": 27,
@@ -157,6 +169,7 @@
         "details": null
       },
       {
+        "productId": 13,
         "name": "Bunnies Eating Grass",
         "category": "pets",
         "price": 85,
@@ -170,6 +183,7 @@
         "details": null
       },
       {
+        "productId": 14,
         "name": "New York City",
         "category": "cities",
         "price": 93.89,
@@ -183,6 +197,7 @@
         "details": null
       },
       {
+        "productId": 15,
         "name": "Person Walking Between Green Forest Trees",
         "category": "nature",
         "price": 220,
@@ -196,6 +211,7 @@
         "details": null
       },
       {
+        "productId": 16,
         "name": "Pod of Dolphins",
         "category": "nature",
         "price": 280,
@@ -209,6 +225,7 @@
         "details": null
       },
       {
+        "productId": 17,
         "name": "Shanghai City",
         "category": "cities",
         "price": 93.89,
@@ -222,6 +239,7 @@
         "details": null
       },
       {
+        "productId": 18,
         "name": "Happy Ladies",
         "category": "people",
         "price": 100,
@@ -231,10 +249,11 @@
           "alt": "Happy Ladies"
         },
         "bestseller": false,
-        "featured": true,
+        "featured": false,
         "details": null
       },
       {
+        "productId": 19,
         "name": "Women At The Beach",
         "category": "people",
         "price": 12,
@@ -248,6 +267,7 @@
         "details": null
       },
       {
+        "productId": 20,
         "name": "Chefs In The Kitchen",
         "category": "people",
         "price": 45,
@@ -257,10 +277,11 @@
           "alt": "Chefs In The Kitchen"
         },
         "bestseller": false,
-        "featured": true,
+        "featured": false,
         "details": null
       },
       {
+        "productId": 21,
         "name": "Harmony With Unity",
         "category": "people",
         "price": 18,
@@ -270,10 +291,11 @@
           "alt": "Harmony With Unity"
         },
         "bestseller": false,
-        "featured": true,
+        "featured": false,
         "details": null
       },
       {
+        "productId": 22,
         "name": "Architecture Beach Bridge",
         "category": "landmarks",
         "price": 101,
@@ -291,6 +313,7 @@
         "details": null
       },
       {
+        "productId": 23,
         "name": "Eiffel Tower",
         "category": "landmarks",
         "price": 101,
@@ -304,10 +327,11 @@
           "alt": "Eiffel Tower"
         },
         "bestseller": false,
-        "featured": true,
+        "featured": false,
         "details": null
       },
       {
+        "productId": 24,
         "name": "Statue of Liberty",
         "category": "landmarks",
         "price": 118,
@@ -321,10 +345,11 @@
           "alt": "Statue of Liberty"
         },
         "bestseller": false,
-        "featured": true,
+        "featured": false,
         "details": null
       },
       {
+        "productId": 25,
         "name": "Straw Hat And Sword",
         "category": "people",
         "price": 101,

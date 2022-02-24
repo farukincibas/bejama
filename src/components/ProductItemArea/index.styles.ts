@@ -66,13 +66,16 @@ export const ProductCategory = styled.div`
     text-transform: capitalize;
     opacity: 0.5;
     padding: 10px 0;
+    font-weight: 700;
 `;
 
 export const ProductName = styled.div`
     font-weight: 700;
     padding-bottom: 7px;
+    font-size: 20px;
 `;
 
 export const ProductPrice = styled.div`
     opacity: 0.5;
+    font-size: 17px;
 `;

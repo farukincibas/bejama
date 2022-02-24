@@ -6,11 +6,31 @@ import CancelIcon from '../../icons/close.svg';
 import { useEffect, useState } from 'react';
 import '../../styles/Form.css';
 import ProductItemsArea from '../ProductItemArea';
+import ReactPaginate from 'react-paginate'
+
 const ProductListArea = ({ products }: any) => {
     const [showCategory, setShowCategory] = useState(true);
     const [checkedPeople, setCheckedPeople] = useState(false);
     const [checkedPremium, setCheckedPremium] = useState(false);
     const [checkedPets, setCheckedPets] = useState(false);
+    const [pageNum, setPageNum] = useState(0);
+    const [hidePrev, setHidePrev] = useState("hidebx")
+    const [hideNext, setHideNext] = useState("")
+
+    const productsPerPage = 6
+    const pagesVisited = pageNum * productsPerPage;
+    const displayProducts = products.slice(pagesVisited, (pagesVisited + productsPerPage))
+        .map(((product: any, keyId: Number) => {
+            return <ProductItemsArea key={keyId} product={product} />
+        }));
+    const pageCounter = Math.ceil(products.length / productsPerPage);
+    const changePage = ({ selected }: any) => {
+        setPageNum(selected)
+        if (selected > 0) setHidePrev("")
+        if (selected === 0) setHidePrev("hidebx")
+        if (selected >= pageCounter - 1) setHideNext("hidebx")
+        if (selected < pageCounter - 1) setHideNext("")
+    }
 
     const handlePeopleCheckboxChange = (checkedName: string) => {
         console.log(checkedName);
@@ -136,12 +156,25 @@ const ProductListArea = ({ products }: any) => {
                         </ProductListCategoryGroupDiv>
                     </ProductListCategory>
                 )}
-                <ProductItemsList>
-                    {products.length > 0 && products.map((product: any) => (
-                        <ProductItemsArea key={product.name} product={product}></ProductItemsArea>
-                    ))}
-                </ProductItemsList>
+                <div>
+                    <ProductItemsList>
+                        {displayProducts}
+                    </ProductItemsList>
 
+                    <ReactPaginate
+                        previousLabel={""}
+                        nextLabel={""}
+                        pageCount={pageCounter}
+                        onPageChange={changePage}
+                        containerClassName={"paginationHolder"}
+                        previousLinkClassName={"prevBtn"}
+                        previousClassName={`prevHolder ${hidePrev}`}
+                        nextLinkClassName={"nextBtn"}
+                        nextClassName={`nextHolder ${hideNext}`}
+                        disabledClassName={"paginationDisabled"}
+                        activeClassName={"paginationActive"}
+                    />
+                </div>
             </ProductListSection>
         </>
     );

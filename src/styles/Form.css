@@ -29,3 +29,46 @@ input[type="checkbox"]:checked::before {
 .hidebx {
 	display: none !important;
 }
+
+
+/* Pagination */
+.paginationHolder {
+	list-style: none;
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  margin-top:60px;
+}
+
+.paginationHolder a {
+	padding: 10px;
+	margin: 2px;
+	border-radius: 5px;
+	font-size: 18px;
+	color: #b4b4b4;
+	cursor: pointer;
+}
+
+.paginationActive a {
+	cursor: default;
+	pointer-events: none;
+	color: #000000;
+}
+
+.prevBtn,
+.nextBtn {
+	background-image: url(../icons/carret-down.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 20px;
+}
+
+.prevHolder {
+	transform: rotate(90deg);
+}
+
+.nextHolder {
+	transform: rotate(-90deg);
+}

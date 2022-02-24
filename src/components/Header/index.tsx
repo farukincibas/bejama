@@ -4,11 +4,14 @@ import CancelIcon from '../../icons/close.svg';
 import { ClearBothDiv } from '../ProductArea/index.styles';
 import { useState, useContext } from 'react';
 import { Context } from '../../store/context';
-import { Cart } from '../../store/reducer';
+import { ActionTypes, Cart } from '../../store/reducer';
 
 const Header = () => {
     const [showBasket, setShowBasket] = useState(false);
-    const { state } = useContext(Context);
+    const { state, dispatch } = useContext(Context);
+
+    const clearCart = () => { dispatch({ type: ActionTypes.clearCart, payload: [] }); setShowBasket(!showBasket); }
+
     return (
         <ProductNavDiv>
             <img src={AppLogo} alt="Bejamas Logo" />
@@ -32,7 +35,7 @@ const Header = () => {
                             </ProductBagImageBoxDiv>
                         </ProductCartBasketTile>
                     ))}
-                    <ButtonClear>Clear</ButtonClear>
+                    <ButtonClear onClick={() => clearCart()}>Clear</ButtonClear>
                 </ProductCartBasketAside>
             )}
         </ProductNavDiv>

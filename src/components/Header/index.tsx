@@ -3,8 +3,8 @@ import AppLogo from '../../icons/bejamas-logo.svg'
 import CancelIcon from '../../icons/close.svg';
 import { ClearBothDiv } from '../ProductArea/index.styles';
 import { useState, useContext } from 'react';
-import { Context } from '../../store/context';
-import { ActionTypes, Cart } from '../../store/reducer';
+import { Context } from '../../store/cart-context/context';
+import { ActionTypes, Cart } from '../../store/cart-context/reducer';
 
 const Header = () => {
     const [showBasket, setShowBasket] = useState(false);

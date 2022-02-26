@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ContextProvider from './store/ContextProvider';
+import ContextProvider from './store/cart-context/ContextProvider';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyleLocationBoard from './styles/GlobalStyle';
 import { theme } from './styles/themes';

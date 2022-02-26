@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ProductDiv, ProductTitleDiv, ProductAddToCartButton, ProductImageBox, ProductImage, ProductTagDiv, ProductSummaryDiv, ProductDescriptionDiv, AppTitleDiv, ProductCategoryDiv, ParagraphMaxWidthFiveHundred, ProductRecommendDiv, ProductRecommendPicsDiv, RecommendPicsBoxDiv, RecommendPicsImg, ClearBothDiv, Paragraph, ProductMainDiv, ProductAddToCartButtonMobile, MarginBottom } from './index.styles';
-import { ActionTypes, Cart } from '../../store/reducer';
-import { Context } from '../../store/context';
+import { ActionTypes, Cart } from '../../store/cart-context/reducer';
+import { Context } from '../../store/cart-context/context';
 
 const ProductArea = (products: any) => {
     const wholeProducts = products.products;

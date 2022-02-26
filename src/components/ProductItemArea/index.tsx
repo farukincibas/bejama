@@ -1,6 +1,6 @@
 import { AddToCartBelow, ProductCategory, ProductImageBelow, ProductItemDiv, ProductItemImgDiv, ProductName, ProductPrice, ProductTopLeftText } from './index.styles';
-import { Context } from '../../store/context';
-import { ActionTypes, Cart } from '../../store/reducer';
+import { Context } from '../../store/cart-context/context';
+import { ActionTypes, Cart } from '../../store/cart-context/reducer';
 import { useContext } from 'react';
 
 const ProductItemsArea = ({ product }: any) => {

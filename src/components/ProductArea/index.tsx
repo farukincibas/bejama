@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { ProductDiv, ProductTitleDiv, ProductAddToCartButton, ProductImageBox, ProductImage, ProductTagDiv, ProductSummaryDiv, ProductDescriptionDiv, AppTitleDiv, ProductCategoryDiv, ParagraphMaxWidthFiveHundred, ProductRecommendDiv, ProductRecommendPicsDiv, RecommendPicsBoxDiv, RecommendPicsImg, ClearBothDiv, Paragraph, ProductMainDiv, ProductAddToCartButtonMobile, MarginBottom } from './index.styles';
 import { ActionTypes, Cart } from '../../store/cart-context/reducer';
 import { Context } from '../../store/cart-context/context';
+import { ActionTypesToggle } from '../../store/toggle-context/reducer';
+import { ToggleContext } from '../../store/toggle-context/context';
 
 const ProductArea = (products: any) => {
     const wholeProducts = products.products;
@@ -9,6 +11,9 @@ const ProductArea = (products: any) => {
     const product = filteredProduct[0];
     const recommendations = product?.details?.recommendations;
     const { dispatch } = useContext(Context);
+    const { dispatchToggle } = useContext(ToggleContext);
+
+    const toggleCart = () => { dispatchToggle({ type: ActionTypesToggle.showCart, payload: { showCart: true } }); }
 
     const handleAdd = ({ name, image, price, productId }: Cart) => {
         const newCartItem = {
@@ -18,6 +23,7 @@ const ProductArea = (products: any) => {
             price: price,
         };
         dispatch({ type: ActionTypes.addCart, payload: newCartItem });
+        toggleCart();
     };
 
 

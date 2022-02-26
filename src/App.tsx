@@ -6,6 +6,7 @@ import { theme } from './styles/themes';
 import Header from './components/Header';
 import ProductArea from './components/ProductArea';
 import ProductListArea from './components/ProductListArea';
+import ToggleContextProvider from './store/toggle-context/ToggleContextProvider';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -33,12 +34,14 @@ const App = () => {
 
   return (
     <ContextProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyleLocationBoard />
-        <Header></Header>
-        <ProductArea products={products}></ProductArea>
-        <ProductListArea products={products}></ProductListArea>
-      </ThemeProvider>
+      <ToggleContextProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyleLocationBoard />
+          <Header></Header>
+          <ProductArea products={products}></ProductArea>
+          <ProductListArea products={products}></ProductListArea>
+        </ThemeProvider>
+      </ToggleContextProvider>
     </ContextProvider>
   );
 };

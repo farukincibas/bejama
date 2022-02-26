@@ -2,9 +2,14 @@ import { AddToCartBelow, ProductCategory, ProductImageBelow, ProductItemDiv, Pro
 import { Context } from '../../store/cart-context/context';
 import { ActionTypes, Cart } from '../../store/cart-context/reducer';
 import { useContext } from 'react';
+import { ActionTypesToggle } from '../../store/toggle-context/reducer';
+import { ToggleContext } from '../../store/toggle-context/context';
 
 const ProductItemsArea = ({ product }: any) => {
     const { dispatch } = useContext(Context);
+    const { dispatchToggle } = useContext(ToggleContext);
+
+    const toggleCart = () => { dispatchToggle({ type: ActionTypesToggle.showCart, payload: { showCart: true } }); }
 
     const handleAdd = ({ name, image, price, productId }: Cart) => {
         const newCartItem = {
@@ -14,6 +19,7 @@ const ProductItemsArea = ({ product }: any) => {
             price: price,
         };
         dispatch({ type: ActionTypes.addCart, payload: newCartItem });
+        toggleCart();
     };
 
 

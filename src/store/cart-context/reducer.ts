@@ -9,7 +9,7 @@ export const initialState: Cart[] = JSON.parse(localStorage.getItem('cartItems')
 
 export enum ActionTypes {
     addCart,
-    clearCart,
+    clearCart
 }
 export interface AddCartAction {
     type: ActionTypes.addCart;

@@ -8,17 +8,18 @@ import '../../styles/Form.css';
 import ProductItemsArea from '../ProductItemArea';
 import ReactPaginate from 'react-paginate'
 
+
 const ProductListArea = ({ products, setProducts }: any) => {
     const [showCategory, setShowCategory] = useState(true);
-    const [checkedPeople, setCheckedPeople] = useState(false);
-    const [checkedPremium, setCheckedPremium] = useState(false);
-    const [checkedPets, setCheckedPets] = useState(false);
     const [pageNum, setPageNum] = useState(0);
     const [hidePrev, setHidePrev] = useState("hidebx");
     const [hideNext, setHideNext] = useState("");
     const productsPerPage = 6
     const pagesVisited = pageNum * productsPerPage;
     const pageCounter = Math.ceil(products.length / productsPerPage);
+    const [filterCategoryList, setFilterCategoryList] = useState<string[]>([]);
+    const [productsCurrent, setProductsCurrent] = useState([...products]);
+
 
     const changePage = ({ selected }: any) => {
         setPageNum(selected)
@@ -61,22 +62,54 @@ const ProductListArea = ({ products, setProducts }: any) => {
 
     }
 
-    const handlePeopleCheckboxChange = (checkedName: string) => {
-        console.log(checkedName);
-        setCheckedPeople(!checkedPeople);
+
+    const handleCheckboxChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const checkedName = e.target.value;
+        if (!filterCategoryList.includes(checkedName)) {
+            setFilterCategoryList(arr => [...arr, checkedName]);
+        } else {
+            setFilterCategoryList(filterCategoryList.filter(item => item !== checkedName));
+        }
     }
-    const handlePremiumCheckboxChange = (checkedName: string) => {
-        console.log(checkedName);
-        setCheckedPremium(!checkedPremium);
+
+    const buildFilter = (filter: { [x: string]: any; category?: string[]; }) => {
+        let query: any = {};
+        for (let keys in filter) {
+            if (filter[keys].constructor === Array && filter[keys].length > 0) {
+                query[keys] = filter[keys];
+            }
+        }
+        return query;
     }
-    const handlePetsCheckboxChange = (checkedName: string) => {
-        console.log(checkedName);
-        setCheckedPets(!checkedPets);
-    }
+
+    const filterData = (data: any[], query: { [x: string]: string | any[]; }) => {
+        const filteredData = data.filter((item) => {
+            for (let key in query) {
+                if (item[key] === undefined || !query[key].includes(item[key])) {
+                    return false;
+                }
+            }
+            return true;
+        });
+        return filteredData;
+    };
+
+
+
+    useEffect(() => {
+        let filter = {
+            category: filterCategoryList,
+        };
+        const query = buildFilter(filter);
+        const resultFilter = filterData(productsCurrent, query);
+        setProducts(resultFilter);
+    }, [filterCategoryList])
+
 
     useEffect(() => {
         sortByPrice();
-    }, [])
+        setProductsCurrent([...products]);
+    }, []);
 
     useEffect(() => {
         const handleResize = () => {
@@ -128,37 +161,37 @@ const ProductListArea = ({ products, setProducts }: any) => {
                         <ProductListCategoryGroupDiv>
                             <form>
                                 <div className="checkbox-holder">
-                                    <input type="checkbox" checked={checkedPeople} onChange={() => { handlePeopleCheckboxChange("people"); }} name="category" className="hidebx" id="c1" />
+                                    <input type="checkbox" value="people" onChange={(event) => { handleCheckboxChanged(event); }} name="category" className="hidebx" id="c1" />
                                     <label htmlFor='c1' className="form-checkbox">people</label>
                                 </div>
 
                                 <div className="checkbox-holder">
-                                    <input type="checkbox" checked={checkedPremium} onChange={() => { handlePremiumCheckboxChange("premimum"); }} name="category" className="hidebx" id="c2" />
+                                    <input type="checkbox" value="premium" onChange={(event) => handleCheckboxChanged(event)} name="category" className="hidebx" id="c2" />
                                     <label htmlFor='c2' className="form-checkbox" >premium</label>
                                 </div>
 
                                 <div className="checkbox-holder">
-                                    <input type="checkbox" checked={checkedPets} onChange={() => { handlePetsCheckboxChange("pets"); }} name="category" className="hidebx" id="c3" />
+                                    <input type="checkbox" value="pets" onChange={(event) => handleCheckboxChanged(event)} name="category" className="hidebx" id="c3" />
                                     <label htmlFor='c3' className="form-checkbox" >pets</label>
                                 </div>
 
                                 <div className="checkbox-holder">
-                                    <input type="checkbox" defaultChecked={false} name="category" className="hidebx" id="c4" />
+                                    <input type="checkbox" value="food" onChange={(event) => handleCheckboxChanged(event)} defaultChecked={false} name="category" className="hidebx" id="c4" />
                                     <label htmlFor='c4' className="form-checkbox" >food</label>
                                 </div>
 
                                 <div className="checkbox-holder">
-                                    <input type="checkbox" defaultChecked={false} name="category" className="hidebx" id="c5" />
+                                    <input type="checkbox" value="landmarks" onChange={(event) => handleCheckboxChanged(event)} defaultChecked={false} name="category" className="hidebx" id="c5" />
                                     <label htmlFor='c5' className="form-checkbox" >landmarks</label>
                                 </div>
 
                                 <div className="checkbox-holder">
-                                    <input type="checkbox" defaultChecked={false} name="category" className="hidebx" id="c6" />
+                                    <input type="checkbox" value="cities" onChange={(event) => handleCheckboxChanged(event)} defaultChecked={false} name="category" className="hidebx" id="c6" />
                                     <label htmlFor='c6' className="form-checkbox" >cities</label>
                                 </div>
 
                                 <div className="checkbox-holder">
-                                    <input type="checkbox" defaultChecked={false} name="category" className="hidebx" id="c7" />
+                                    <input type="checkbox" value="nature" onChange={(event) => handleCheckboxChanged(event)} defaultChecked={false} name="category" className="hidebx" id="c7" />
                                     <label htmlFor='c7' className="form-checkbox" >nature</label>
                                 </div>
 

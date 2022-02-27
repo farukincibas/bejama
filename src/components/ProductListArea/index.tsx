@@ -9,7 +9,7 @@ import ProductItemsArea from '../ProductItemArea';
 import ReactPaginate from 'react-paginate'
 
 
-const ProductListArea = ({ products, setProducts }: any) => {
+const ProductListArea = ({ products, setProducts, productsCurrent }: any) => {
     const [showCategory, setShowCategory] = useState(true);
     const [pageNum, setPageNum] = useState(0);
     const [hidePrev, setHidePrev] = useState("hidebx");
@@ -18,7 +18,7 @@ const ProductListArea = ({ products, setProducts }: any) => {
     const pagesVisited = pageNum * productsPerPage;
     const pageCounter = Math.ceil(products.length / productsPerPage);
     const [filterCategoryList, setFilterCategoryList] = useState<string[]>([]);
-    const [productsCurrent, setProductsCurrent] = useState([...products]);
+
 
 
     const changePage = ({ selected }: any) => {
@@ -72,6 +72,23 @@ const ProductListArea = ({ products, setProducts }: any) => {
         }
     }
 
+    const handleRadioboxChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const checkedPrice = e.target.value;
+        console.log(productsCurrent);
+        if (checkedPrice === 'lower-than-twenty') {
+            setProducts(productsCurrent.filter((product: any) => product.price < 20));
+        }
+        else if (checkedPrice === 'twenty-between-hundred') {
+            setProducts(productsCurrent.filter((product: any) => product.price >= 20 && product.price <= 100));
+        }
+        else if (checkedPrice === 'hundred-between-twoHundred') {
+            setProducts(productsCurrent.filter((product: any) => product.price >= 100 && product.price <= 200));
+        }
+        else if (checkedPrice === 'more-than-twoHundred') {
+            setProducts(productsCurrent.filter((product: any) => product.price > 200));
+        }
+    }
+
     const buildFilter = (filter: { [x: string]: any; category?: string[]; }) => {
         let query: any = {};
         for (let keys in filter) {
@@ -108,7 +125,6 @@ const ProductListArea = ({ products, setProducts }: any) => {
 
     useEffect(() => {
         sortByPrice();
-        setProductsCurrent([...products]);
     }, []);
 
     useEffect(() => {
@@ -202,19 +218,19 @@ const ProductListArea = ({ products, setProducts }: any) => {
                         <ProductListCategoryGroupDiv>
                             <form>
                                 <div className="checkbox-holder">
-                                    <input type="radio" defaultChecked={false} name="category" className="hidebx" id="r1" />
+                                    <input type="radio" value="lower-than-twenty" onChange={(event) => handleRadioboxChanged(event)} name="category" className="hidebx" id="r1" />
                                     <label htmlFor='r1' className="form-checkbox" >Lower Than $20</label>
                                 </div>
                                 <div className="checkbox-holder">
-                                    <input type="radio" defaultChecked={false} name="category" className="hidebx" id="r2" />
+                                    <input type="radio" value="twenty-between-hundred" onChange={(event) => handleRadioboxChanged(event)} name="category" className="hidebx" id="r2" />
                                     <label htmlFor='r2' className="form-checkbox" >$20-$100</label>
                                 </div>
                                 <div className="checkbox-holder">
-                                    <input type="radio" defaultChecked={false} name="category" className="hidebx" id="r3" />
+                                    <input type="radio" value="hundred-between-twoHundred" onChange={(event) => handleRadioboxChanged(event)} name="category" className="hidebx" id="r3" />
                                     <label htmlFor='r3' className="form-checkbox" >$100-$200</label>
                                 </div>
                                 <div className="checkbox-holder">
-                                    <input type="radio" defaultChecked={false} name="category" className="hidebx" id="r4" />
+                                    <input type="radio" value="more-than-twoHundred" onChange={(event) => handleRadioboxChanged(event)} name="category" className="hidebx" id="r4" />
                                     <label htmlFor='r4' className="form-checkbox" >More Than $200</label>
                                 </div>
 

@@ -10,6 +10,7 @@ import ToggleContextProvider from './store/toggle-context/ToggleContextProvider'
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [productsCurrent, setProductsCurrent] = useState([]);
 
   const getProductData = () => {
     fetch('json/products.json'
@@ -25,6 +26,7 @@ const App = () => {
       })
       .then(function (productJson) {
         setProducts(productJson.products);
+        setProductsCurrent(productJson.products);
       });
   }
 
@@ -39,7 +41,7 @@ const App = () => {
           <GlobalStyleLocationBoard />
           <Header></Header>
           <ProductArea products={products}></ProductArea>
-          <ProductListArea products={products} setProducts={setProducts}></ProductListArea>
+          <ProductListArea products={products} setProducts={setProducts} productsCurrent={productsCurrent}></ProductListArea>
         </ThemeProvider>
       </ToggleContextProvider>
     </ContextProvider>

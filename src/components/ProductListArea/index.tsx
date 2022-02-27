@@ -18,6 +18,8 @@ const ProductListArea = ({ products, setProducts, productsCurrent }: any) => {
     const pagesVisited = pageNum * productsPerPage;
     const pageCounter = Math.ceil(products.length / productsPerPage);
     const [filterCategoryList, setFilterCategoryList] = useState<string[]>([]);
+    const [checkedPriceValue, setCheckedPriceValue] = useState('');
+    const [categoryFilter, setCategoryFilter] = useState<any>([]);
 
 
 
@@ -72,21 +74,28 @@ const ProductListArea = ({ products, setProducts, productsCurrent }: any) => {
         }
     }
 
-    const handleRadioboxChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const checkedPrice = e.target.value;
-        console.log(productsCurrent);
+
+    const filterPrices = (filterData: any, checkedPrice: string) => {
         if (checkedPrice === 'lower-than-twenty') {
-            setProducts(productsCurrent.filter((product: any) => product.price < 20));
+            setProducts(filterData.filter((product: any) => product.price < 20));
         }
         else if (checkedPrice === 'twenty-between-hundred') {
-            setProducts(productsCurrent.filter((product: any) => product.price >= 20 && product.price <= 100));
+            setProducts(filterData.filter((product: any) => product.price >= 20 && product.price <= 100));
         }
         else if (checkedPrice === 'hundred-between-twoHundred') {
-            setProducts(productsCurrent.filter((product: any) => product.price >= 100 && product.price <= 200));
+            setProducts(filterData.filter((product: any) => product.price >= 100 && product.price <= 200));
         }
         else if (checkedPrice === 'more-than-twoHundred') {
-            setProducts(productsCurrent.filter((product: any) => product.price > 200));
+            setProducts(filterData.filter((product: any) => product.price > 200));
         }
+    }
+
+    const handleRadioboxChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const checkedPrice = e.target.value;
+        categoryFilter.length > 0 ? filterPrices(categoryFilter, checkedPrice) : filterPrices(productsCurrent, checkedPrice);
+
+
+        setCheckedPriceValue(checkedPrice);
     }
 
     const buildFilter = (filter: { [x: string]: any; category?: string[]; }) => {
@@ -119,7 +128,13 @@ const ProductListArea = ({ products, setProducts, productsCurrent }: any) => {
         };
         const query = buildFilter(filter);
         const resultFilter = filterData(productsCurrent, query);
-        setProducts(resultFilter);
+        setCategoryFilter(resultFilter);
+
+        if (checkedPriceValue !== '') {
+            filterPrices(resultFilter, checkedPriceValue);
+        } else {
+            setProducts(resultFilter);
+        }
     }, [filterCategoryList])
 
 

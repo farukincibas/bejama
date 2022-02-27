@@ -1,4 +1,4 @@
-import { CancelMarkImage, HeavySpan, HeavyText, LightFiftySpan, LightTextDiv, ProductItemsList, ProductListCategory, ProductListCategoryGroupDiv, ProductListCategoryTitleDiv, ProductListFilterDiv, ProductListHeadDiv, ProductListMobileSortDiv, ProductListSection, ProductListSortDiv, ProductListTypeDiv, SelectPrice, SettingsImage, SortArrowImage } from './index.styles';
+import { CancelMarkImage, HeavySpan, HeavyText, LightFiftySpan, LightTextDiv, ProductItemsList, ProductListCategory, ProductListCategoryGroupDiv, ProductListCategoryTitleDiv, ProductListFilterDiv, ProductListHeadDiv, ProductListMobileSortDiv, ProductListSection, ProductListSortDiv, ProductListTypeDiv, SelectSort, SettingsImage, SortArrowImage } from './index.styles';
 import Sort from '../../icons/sort.svg';
 import CarretDown from '../../icons/carret-down.svg';
 import SettingsIcon from '../../icons/setting-lines.svg';
@@ -8,28 +8,57 @@ import '../../styles/Form.css';
 import ProductItemsArea from '../ProductItemArea';
 import ReactPaginate from 'react-paginate'
 
-const ProductListArea = ({ products }: any) => {
+const ProductListArea = ({ products, setProducts }: any) => {
     const [showCategory, setShowCategory] = useState(true);
     const [checkedPeople, setCheckedPeople] = useState(false);
     const [checkedPremium, setCheckedPremium] = useState(false);
     const [checkedPets, setCheckedPets] = useState(false);
     const [pageNum, setPageNum] = useState(0);
-    const [hidePrev, setHidePrev] = useState("hidebx")
-    const [hideNext, setHideNext] = useState("")
-
+    const [hidePrev, setHidePrev] = useState("hidebx");
+    const [hideNext, setHideNext] = useState("");
     const productsPerPage = 6
     const pagesVisited = pageNum * productsPerPage;
-    const displayProducts = products.slice(pagesVisited, (pagesVisited + productsPerPage))
-        .map(((product: any, keyId: Number) => {
-            return <ProductItemsArea key={keyId} product={product} />
-        }));
     const pageCounter = Math.ceil(products.length / productsPerPage);
+
     const changePage = ({ selected }: any) => {
         setPageNum(selected)
         if (selected > 0) setHidePrev("")
         if (selected === 0) setHidePrev("hidebx")
         if (selected >= pageCounter - 1) setHideNext("hidebx")
         if (selected < pageCounter - 1) setHideNext("")
+    }
+
+    const sortByPrice = () => {
+        const sortedPriceMinToMax = [...products].sort((a, b) => a.price - b.price);
+        setProducts(sortedPriceMinToMax);
+    }
+
+
+    const sortByAscending = () => {
+        const ascending = [...products].sort((a: { name: string; }, b: { name: string; }) => a?.name.localeCompare(b?.name));
+        setProducts(ascending);
+    }
+
+    const sortByDescending = () => {
+        const descending = [...products].sort((a: { name: string; }, b: { name: string; }) => b?.name.localeCompare(a?.name));
+        setProducts(descending);
+    }
+
+
+    const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
+        const filterName = event.target.value;
+
+        if (filterName === 'Ascending') {
+            sortByAscending();
+        }
+        else if (filterName === 'Descending') {
+            sortByDescending();
+        }
+        else if (filterName === 'Price') {
+            sortByPrice();
+        }
+
     }
 
     const handlePeopleCheckboxChange = (checkedName: string) => {
@@ -44,6 +73,10 @@ const ProductListArea = ({ products }: any) => {
         console.log(checkedName);
         setCheckedPets(!checkedPets);
     }
+
+    useEffect(() => {
+        sortByPrice();
+    }, [])
 
     useEffect(() => {
         const handleResize = () => {
@@ -68,11 +101,11 @@ const ProductListArea = ({ products }: any) => {
                     </ProductListSortDiv>
 
                     {/* price */}
-                    <SelectPrice source={CarretDown}>
-                        <option value="">Price</option>
+                    <SelectSort onChange={(event) => handleSort(event)} source={CarretDown}>
+                        <option value="Price">Price</option>
                         <option value="Ascending">Ascending</option>
                         <option value="Descending">Descending</option>
-                    </SelectPrice>
+                    </SelectSort>
 
                     {/* mobile tap filter */}
                     <ProductListMobileSortDiv onClick={() => setShowCategory(!showCategory)}>
@@ -158,7 +191,10 @@ const ProductListArea = ({ products }: any) => {
                 )}
                 <div>
                     <ProductItemsList>
-                        {displayProducts}
+                        {products.slice(pagesVisited, (pagesVisited + productsPerPage))
+                            .map(((product: any, keyId: Number) => {
+                                return <ProductItemsArea key={keyId} product={product} />
+                            }))}
                     </ProductItemsList>
 
                     <ReactPaginate

@@ -39,7 +39,7 @@ const App = () => {
           <GlobalStyleLocationBoard />
           <Header></Header>
           <ProductArea products={products}></ProductArea>
-          <ProductListArea products={products}></ProductListArea>
+          <ProductListArea products={products} setProducts={setProducts}></ProductListArea>
         </ThemeProvider>
       </ToggleContextProvider>
     </ContextProvider>

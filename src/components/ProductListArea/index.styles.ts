@@ -46,7 +46,6 @@ export const ProductListSortDiv = styled.div`
     display: flex;
     position: relative;
     padding-right: 12px;
-    cursor: pointer;
     @media (max-width: 999px) {
         display: none;
     }
@@ -58,7 +57,7 @@ export const LightTextDiv = styled.div`
     margin-left: 4px;
 `;
 
-export const SelectPrice = styled.select<ImageProps>`
+export const SelectSort = styled.select<ImageProps>`
     ${({ source, theme: { colors } }) => css`
         font-size: 18px;
         padding: 3px 5px;
